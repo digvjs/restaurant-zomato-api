@@ -54,6 +54,7 @@ export default {
 
         /** search city from the given keyword **/
         changeCity() {
+            $('#loader').show();
             axios.get( this.$store.state.api_url + '/cities', { 
                 params: { 'q': this.city.name }, 
                 headers: { 'user-key': this.$store.state.api_user_key } 
@@ -70,12 +71,14 @@ export default {
 
                 } else {
                     this.cuisines = [];
+                    $('#loader').hide();
                     this.flashMessage.success({title: 'Success!', message: 'Invalid city!'});
                 }
             })
             .catch(err => {
                 console.log('error: ', err);
                 this.cuisines = [];
+                $('#loader').hide();
                 this.flashMessage.error({title: 'Error!', message: err.response.data.message});
             })
         },
@@ -92,16 +95,19 @@ export default {
                 } else {
                     this.cuisines = [];
                 }
+                $('#loader').hide();
             })
             .catch(err => {
                 console.log('error: ', err);
                 this.cuisines = [];
+                $('#loader').hide();
                 this.flashMessage.error({title: 'Error!', message: err.response.data.message});
             })
         },
 
         /** search restaurants based on city and cuisines **/
         search() {
+            $('#loader').show();
             let cuisines = this.selected_cuisine.length ? this.selected_cuisine.join(',') : '';
 
             axios.get( this.$store.state.api_url + '/search', { 
@@ -120,10 +126,12 @@ export default {
                 } else {
                     this.$store.state.restaurants = [];
                 }
+                $('#loader').hide();
             })
             .catch(err => {
                 console.log('error: ', err);
                 this.$store.state.restaurants = [];
+                $('#loader').hide();
                 this.flashMessage.error({title: 'Error!', message: err.response.data.message});
             })
         }

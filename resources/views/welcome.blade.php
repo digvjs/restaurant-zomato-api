@@ -14,8 +14,24 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
+    <style type="text/css">
+        #loader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url('{{ asset('images/loader.GIF') }}') 50% 50% no-repeat #fff;
+            background-size: 50px;
+            opacity: 0.5;
+            display: none;
+        }
+  </style>
+
 </head>
 <body>
+    <div id="loader"></div>
     <div id="app">
         <navigation></navigation>
         <div class="container">

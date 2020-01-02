@@ -2111,6 +2111,7 @@ __webpack_require__.r(__webpack_exports__);
     changeCity: function changeCity() {
       var _this = this;
 
+      $('#loader').show();
       axios.get(this.$store.state.api_url + '/cities', {
         params: {
           'q': this.city.name
@@ -2129,6 +2130,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.getCuisines();
         } else {
           _this.cuisines = [];
+          $('#loader').hide();
 
           _this.flashMessage.success({
             title: 'Success!',
@@ -2138,6 +2140,7 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         console.log('error: ', err);
         _this.cuisines = [];
+        $('#loader').hide();
 
         _this.flashMessage.error({
           title: 'Error!',
@@ -2163,9 +2166,12 @@ __webpack_require__.r(__webpack_exports__);
         } else {
           _this2.cuisines = [];
         }
+
+        $('#loader').hide();
       })["catch"](function (err) {
         console.log('error: ', err);
         _this2.cuisines = [];
+        $('#loader').hide();
 
         _this2.flashMessage.error({
           title: 'Error!',
@@ -2178,6 +2184,7 @@ __webpack_require__.r(__webpack_exports__);
     search: function search() {
       var _this3 = this;
 
+      $('#loader').show();
       var cuisines = this.selected_cuisine.length ? this.selected_cuisine.join(',') : '';
       axios.get(this.$store.state.api_url + '/search', {
         params: {
@@ -2197,9 +2204,12 @@ __webpack_require__.r(__webpack_exports__);
         } else {
           _this3.$store.state.restaurants = [];
         }
+
+        $('#loader').hide();
       })["catch"](function (err) {
         console.log('error: ', err);
         _this3.$store.state.restaurants = [];
+        $('#loader').hide();
 
         _this3.flashMessage.error({
           title: 'Error!',
