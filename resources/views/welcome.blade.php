@@ -19,7 +19,7 @@
     <div id="app">
         <navigation></navigation>
         <div class="container">
-            <home></home>
+            <router-view></router-view>
         </div>
         <FlashMessage></FlashMessage>
     </div>

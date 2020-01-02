@@ -76,7 +76,7 @@ export default {
             .catch(err => {
                 console.log('error: ', err);
                 this.cuisines = [];
-                this.flashMessage.error({title: 'Error!', message: err.message});
+                this.flashMessage.error({title: 'Error!', message: err.response.data.message});
             })
         },
 
@@ -96,7 +96,7 @@ export default {
             .catch(err => {
                 console.log('error: ', err);
                 this.cuisines = [];
-                this.flashMessage.error({title: 'Error!', message: err.message});
+                this.flashMessage.error({title: 'Error!', message: err.response.data.message});
             })
         },
 
@@ -124,7 +124,7 @@ export default {
             .catch(err => {
                 console.log('error: ', err);
                 this.$store.state.restaurants = [];
-                this.flashMessage.error({title: 'Error!', message: err.message});
+                this.flashMessage.error({title: 'Error!', message: err.response.data.message});
             })
         }
 
